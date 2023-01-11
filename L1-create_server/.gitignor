@@ -1,8 +1,0 @@
-goloburdin_wb.conf
-new_user_credentials (1).csv
-*.terraform
-terraform.*
-.terraform/
-*.tfstate
-*.tfstate.backup
-*.terraform.lock.hcl
