@@ -38,5 +38,8 @@ locals {
 
 **providers in terraform** - это плагин, который позволяет взаимодействовать с API. Сюда входят поставщики облачных услуг и поставщики программного обеспечения как услуги. Поставщики указаны в коде конфигурации Terraform. Они сообщают Terraform, с какими сервисами ему нужно взаимодействовать.
 
+Для экспортирта переменной
+terraform apply -var="region=us-east-1" -var="instance_type=t2.micro"
 
-
+export TF_VAR_instance_tupe=t2.small
+проверить env | grep TF_VAR
