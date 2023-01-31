@@ -7,9 +7,10 @@ provider "aws" {
   region = "us-east-1"
 }
 resource "aws_instance" "my_windows_L2_server" {
-  count         = 1
-  ami           = "ami-0599be9b02f8c97c6"
-  instance_type = "t3.small"
+  # count = 1
+  ami = "ami-0599be9b02f8c97c6"
+  # instance_type = "t3.small"
+  instance_type = "t3.large"
 
   vpc_security_group_ids = [aws_security_group.windows_L2_server_SG.id]
 
@@ -34,7 +35,7 @@ resource "aws_security_group" "windows_L2_server_SG" {
     from_port   = 3389
     to_port     = 3389
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["51.158.175.145/32"]
   }
 
   ingress { #inbound traffic
@@ -52,4 +53,9 @@ resource "aws_security_group" "windows_L2_server_SG" {
     ipv6_cidr_blocks = ["::/0"]
   }
 
+}
+
+
+output "webserver_public_ip_address" {
+  value = aws_instance.my_windows_L2_server.public_ip
 }
